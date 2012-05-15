@@ -1,6 +1,9 @@
 Outsmart::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
+  # Set the home page - NEEDS TO BE CHANGED TO OUR HOME PAGE!!!
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
   # Code is not reloaded between requests
   config.cache_classes = true
 
