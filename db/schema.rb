@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120515124355) do
+ActiveRecord::Schema.define(:version => 20120515133552) do
 
   create_table "users", :force => true do |t|
     t.string   "name"
@@ -21,10 +21,8 @@ ActiveRecord::Schema.define(:version => 20120515124355) do
     t.boolean  "Is_Admin"
     t.integer  "Solution_ID"
     t.integer  "Problem_ID"
-    t.datetime "creation_date"
-    t.datetime "updated_date"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
 end
