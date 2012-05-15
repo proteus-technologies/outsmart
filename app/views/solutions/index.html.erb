@@ -1,0 +1,29 @@
+<h1>Listing solutions</h1>
+
+<table>
+  <tr>
+    <th>Solution file url</th>
+    <th>Text description</th>
+    <th>User id</th>
+    <th>Problem id</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @solutions.each do |solution| %>
+  <tr>
+    <td><%= solution.solution_file_url %></td>
+    <td><%= solution.text_description %></td>
+    <td><%= solution.user_ID %></td>
+    <td><%= solution.problem_ID %></td>
+    <td><%= link_to 'Show', solution %></td>
+    <td><%= link_to 'Edit', edit_solution_path(solution) %></td>
+    <td><%= link_to 'Destroy', solution, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Solution', new_solution_path %>

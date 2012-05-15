@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120515133552) do
+ActiveRecord::Schema.define(:version => 20120515144056) do
+
+  create_table "solutions", :force => true do |t|
+    t.string   "solution_file_url"
+    t.string   "text_description"
+    t.integer  "user_ID"
+    t.integer  "problem_ID"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

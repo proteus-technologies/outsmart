@@ -1,4 +1,6 @@
 Outsmart::Application.routes.draw do
+  resources :solutions
+
   resources :users
 
   # The priority is based upon order of creation:

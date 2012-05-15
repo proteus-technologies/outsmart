@@ -1,0 +1,33 @@
+<%= form_for(@solution) do |f| %>
+  <% if @solution.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@solution.errors.count, "error") %> prohibited this solution from being saved:</h2>
+
+      <ul>
+      <% @solution.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :solution_file_url %><br />
+    <%= f.text_field :solution_file_url %>
+  </div>
+  <div class="field">
+    <%= f.label :text_description %><br />
+    <%= f.text_field :text_description %>
+  </div>
+  <div class="field">
+    <%= f.label :user_ID %><br />
+    <%= f.number_field :user_ID %>
+  </div>
+  <div class="field">
+    <%= f.label :problem_ID %><br />
+    <%= f.number_field :problem_ID %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

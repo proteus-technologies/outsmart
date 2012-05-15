@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  solution_file_url: MyString
+  text_description: MyString
+  user_ID: 1
+  problem_ID: 1
+
+two:
+  solution_file_url: MyString
+  text_description: MyString
+  user_ID: 1
+  problem_ID: 1
