@@ -1,4 +1,6 @@
 Outsmart::Application.routes.draw do
+  resources :problems
+
   resources :solutions
 
   resources :users
