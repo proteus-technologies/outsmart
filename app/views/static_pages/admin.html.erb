@@ -1,2 +1,28 @@
-<h1>StaticPages#admin</h1>
+<h1>Welcome Admin!</h1>
 <p>Find me in app/views/static_pages/admin.html.erb</p>
+
+<p>Here is a list of problems with the number of solutions for each:</p>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Solutions</th>
+  </tr>
+  <%if false%>
+  <% @problem.each do |p| %>
+    <tr>
+      <td><%= link_to p.title, p %></td>
+      <td><%= p.solution.count %></td>
+    </tr>
+  <% end %>
+  <%end%>
+
+</table>
+
+<p>Click on the problem to see the solutions!</p>
+
+<p>Would you like to create a new problem?
+<%= link_to 'New Problem', new_problem_path %></p>
+
+<p>Have a great day!</p>
+
