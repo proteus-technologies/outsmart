@@ -1,6 +1,4 @@
 Outsmart::Application.routes.draw do
-  get "static_pages/admin"
-
   resources :problems
 
   resources :solutions
