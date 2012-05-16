@@ -8,14 +8,14 @@
     <th>Title</th>
     <th>Solutions</th>
   </tr>
-  <%if false%>
-  <% @problem.each do |p| %>
+  <%#if false%>
+  <% @problems.each do |p| %>
     <tr>
       <td><%= link_to p.title, p %></td>
-      <td><%= p.solution.count %></td>
+      <td><%= p.solutions.count %></td>
     </tr>
   <% end %>
-  <%end%>
+  <%#end%>
 
 </table>
 
