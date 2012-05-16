@@ -19,7 +19,7 @@
 
 <% @users.each do |user| %>
   <tr>
-    <td><%= user.User_ID %></td>
+    <td><%= user.id %></td>
     <td><%= user.name %></td>
     <td><%= user.email %></td>
     <td><%= user.phone %></td>
@@ -27,8 +27,8 @@
     <td><%= user.Is_Admin %></td>
     <td><%= user.Solution_ID %></td>
     <td><%= user.Problem_ID %></td>
-    <td><%= user.creation_date %></td>
-    <td><%= user.updated_date %></td>
+    <td><%= user.created_at %>/td>
+    <td><%= user.updated_at %></td>
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
