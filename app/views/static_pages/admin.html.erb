@@ -1,10 +1,24 @@
-<h1>Welcom Admin!</h1>
+<h1>Welcome Admin!</h1>
 
 <p>Here is a list of problems with the number of solutions for each:</p>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Solutions</th>
+  </tr>
+  <% if false %>  
+  <% @problems.each do |problem| %>
+    <tr>
+      <td><%= link_to problem.title, problem %></td>
+      <td>Number of solutions</td>
+    </tr>
+  <% end %>
+  <%end%>
+</table>
 
 <p>Click on the problem to see the solutions!</p>
 
-<p>Would you like to create a new problem? If so, here's a button for that. </p>
+<p>Would you like to create a new problem?</p>
 <%= link_to 'New Problem', new_problem_path %>
 
 <p>Have a great day!</p>
