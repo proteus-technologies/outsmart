@@ -21,10 +21,26 @@
 </p>
 
 <p>
-  <b>User:</b>
+  <b>Admin Creator:</b>
   <%= @problem.user_id %>
 </p>
-
+<p>
+  <b>Solutions:</b>
+  <table>
+    <tr>
+      <th>Text Description</th>
+      <th>User ID</th>
+      <th>Solution File URL</th>
+    </tr>
+    <% @problem.solutions.each do |s| %>
+    <tr>
+      <td><%= s.text_description %></td>
+      <td><%= s.user_ID %></td>
+      <td><%= s.solution_file_url %></td>
+    </tr>
+    <% end %>
+  </table>
+</p>
 
 <%= link_to 'Edit', edit_problem_path(@problem) %> |
 <%= link_to 'Back', problems_path %>
