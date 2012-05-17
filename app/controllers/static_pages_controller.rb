@@ -4,6 +4,6 @@ class StaticPagesController < ApplicationController
   end
 
   def home
-  @problems = Problem.last
+    @problems = Problem.all
   end
 end
