@@ -1,4 +1,14 @@
 class UsersController < ApplicationController
+ # before_filter :require_login, :except => [:new, :create, :sign_in]
+
+  # Require login to access the Problem arena (flash won't show
+  # due to being redirected)
+  def require_login
+    unless user_signed_in?
+      flash[:error] = "You must be logged in to access this section"
+      redirect_to root_path
+    end
+  end
   # GET /users
   # GET /users.json
   def index
