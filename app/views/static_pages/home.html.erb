@@ -5,7 +5,7 @@
     application.
     </p>
     <h2>Current Problem</h2>
-    <%@problems.each do |problem| %>
+    <% @problems.each do |problem| %>
       <%=link_to problem.title, problem %>
     <%end%> 
     <h3>Enter Solution</h3>
