@@ -4,5 +4,6 @@ class StaticPagesController < ApplicationController
   end
 
   def home
+  @problems = Problem.last
   end
 end
