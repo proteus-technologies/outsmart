@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
  # before_filter :require_login, :except => [:new, :create, :sign_in]
 
-  # Require login to access the Problem arena (flash won't show
+  # Require login to access the Users arena (flash won't show
   # due to being redirected)
   def require_login
     unless user_signed_in?

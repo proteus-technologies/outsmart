@@ -1,4 +1,15 @@
 class SolutionsController < ApplicationController
+  # before_filter :require_login
+
+  # Require login to access the Solutions arena (flash won't show
+  # due to being redirected)
+  def require_login
+    unless user_signed_in?
+     flash[:error] = "You must be logged in to access this section"
+     redirect_to root_path
+    end
+  end
+ 
   # GET /solutions
   # GET /solutions.json
   def index
