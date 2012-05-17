@@ -5,8 +5,7 @@
     application.
     </p>
     <h2>Current Problem</h2>
-    <% @problems.each do |p|%> 
+    <%p = @problems.last%> 
       <%=link_to p.title, p %>
-    <% end %>
 
     <h3>Enter Solution</h3>
