@@ -9,6 +9,8 @@ Outsmart::Application.routes.draw do
 
   match "admin" => "static_pages#admin"
 
+  devise_for :users
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
