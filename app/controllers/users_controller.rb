@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
  # before_filter :require_login, :except => [:new, :create, :sign_in]
+ # before_filter :require_admin, :except => [:new, :create, :sign_in]
 
   # Require login to access the Users arena (flash won't show
   # due to being redirected)
@@ -9,6 +10,14 @@ class UsersController < ApplicationController
       redirect_to root_path
     end
   end
+
+  # Only Admin should access this arena
+  def require_admin
+    unless current_user.is_admin?
+      redirect_to root_path
+    end
+  end
+  
   # GET /users
   # GET /users.json
   def index

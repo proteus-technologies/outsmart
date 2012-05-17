@@ -1,5 +1,6 @@
 class SolutionsController < ApplicationController
   # before_filter :require_login
+  # before_filter :require_admin, :except => [:new, :create]
 
   # Require login to access the Solutions arena (flash won't show
   # due to being redirected)
@@ -9,7 +10,14 @@ class SolutionsController < ApplicationController
      redirect_to root_path
     end
   end
- 
+
+  # Only Admin should access this arena
+  def require_admin
+    unless current_user.is_admin?
+      redirect_to root_path
+    end
+  end
+
   # GET /solutions
   # GET /solutions.json
   def index
