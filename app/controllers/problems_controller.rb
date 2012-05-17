@@ -1,5 +1,5 @@
 class ProblemsController < ApplicationController
-  before_filter :require_login
+ # before_filter :require_login
 #  before_filter :require_admin
 
   # Require login to access the Problem arena (flash won't show
