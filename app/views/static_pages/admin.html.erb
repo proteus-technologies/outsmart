@@ -1,4 +1,9 @@
 <h1>Welcome Admin!</h1>
+<% if user_signed_in? %>
+  <p>You're signed in!</p>
+<% else %>
+  <p>You're NOT signed in! You shouldn't be here!!!</p>
+<% end %>
 
 <p>Here is a list of problems with the number of solutions for each:</p>
 
