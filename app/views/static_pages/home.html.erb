@@ -6,6 +6,18 @@
     </p>
     <h2>Current Problem</h2>
     <%p = @problems.last%> 
-      <%=link_to p.title, p %>
-
-    <h3>Enter Solution</h3>
+    <table>
+      <tr>
+        <td>Title: </td>
+        <td> <%= p.title %></td>
+      </tr>
+      <tr>
+        <td>Submition Deadline: </td>
+        <td><%= p.end_date%></td>
+      </tr>
+      <tr>
+        <td><%= p.text_description%></td>
+      </tr>
+    </table>
+    <h2>Enter Solution</h2>
+    <p>Need to log-in in order to enter a solution</p>
