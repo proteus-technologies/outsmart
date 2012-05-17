@@ -5,6 +5,7 @@
     application.
     </p>
     <h2>Current Problem</h2>
+       <% if !@problems.empty? %>
     <%p = @problems.last%> 
     <table>
       <tr>
@@ -19,6 +20,10 @@
         <td><%= p.text_description%></td>
       </tr>
     </table>
+  <% else%>
+    <p> No problems at this time.</p>
+  <%end%>
+
     <h2>Enter Solution</h2>
     <p>Need to log-in in order to enter a solution</p>
     <%= link_to 'register' ,new_user_path %> 
