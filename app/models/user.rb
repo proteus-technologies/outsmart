@@ -1,8 +1,11 @@
 class User < ActiveRecord::Base
-  attr_accessible :Is_Admin, :Problem_ID, :Solution_ID, :User_ID, :creation_date, :email, :name, :password, :phone, :updated_date
-  has_many :problems
-  has_many :solutions
-  devise :database_authenticatable, :confirmable, :recoverable, :rememberable, :trackable, :validatable
-  
-end
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :confirmable,
+  # :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :password, :password_confirmation, :remember_me
+  # attr_accessible :title, :body
+end
