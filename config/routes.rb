@@ -1,5 +1,7 @@
 Outsmart::Application.routes.draw do
   devise_for :users
+
+ # devise_for :users
  
   get "static_pages/admin"
 
@@ -7,7 +9,7 @@ Outsmart::Application.routes.draw do
 
   resources :solutions
 
-  resources :users
+ # resources :users
 
   match "admin" => "static_pages#admin"
 
