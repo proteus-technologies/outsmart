@@ -1,17 +1,9 @@
 class UsersController < ApplicationController
- # before_filter :require_login, :except => [:new, :create, :sign_in]
+ # before_filter :authenticate_user!, :except => [:new, :create, :sign_in]
  # before_filter :require_admin, :except => [:new, :create, :sign_in]
 
-  # Require login to access the Users arena (flash won't show
-  # due to being redirected)
-  def require_login
-    unless user_signed_in?
-      flash[:error] = "You must be logged in to access this section"
-      redirect_to root_path
-    end
-  end
-
-  # Only Admin should access this arena
+  # Only Admin should access this arena; if not admin,
+  # redirect to the home page
   def require_admin
     unless current_user.is_admin?
       redirect_to root_path
@@ -37,6 +29,14 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
+    end
+  end
+
+  def sign_in
+    @user = User.find(params[:id])
+
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: 'User was successfully signed in.' }
     end
   end
 

@@ -1,17 +1,9 @@
 class SolutionsController < ApplicationController
-  # before_filter :require_login
+  # before_filter :authenticate_user!
   # before_filter :require_admin, :except => [:new, :create]
 
-  # Require login to access the Solutions arena (flash won't show
-  # due to being redirected)
-  def require_login
-    unless user_signed_in?
-     flash[:error] = "You must be logged in to access this section"
-     redirect_to root_path
-    end
-  end
-
-  # Only Admin should access this arena
+  # Only Admin should access this arena; if not admin
+  # redirect to home
   def require_admin
     unless current_user.is_admin?
       redirect_to root_path

@@ -1,17 +1,9 @@
 class ProblemsController < ApplicationController
- # before_filter :require_login
+  before_filter :authenticate_user!
 #  before_filter :require_admin
 
-  # Require login to access the Problem arena (flash won't show
-  # due to being redirected)
-  def require_login
-    unless user_signed_in?
-      flash[:error] = "You must be logged in to access this section"
-      redirect_to root_path
-    end
-  end
-
-  # Only Admin should access the Problem arena
+  # Only Admin should access the Problem arena; if not admin
+  # redirect to home
   def require_admin
     unless current_user.is_admin?
       redirect_to root_path
