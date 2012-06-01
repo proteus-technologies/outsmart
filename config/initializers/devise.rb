@@ -185,6 +185,7 @@ Devise.setup do |config|
   # Sign_out action can be scoped (i.e. /users/sign_out affects only :user scope).
   # The default is true, which means any logout action will sign out all active scopes.
   # config.sign_out_all_scopes = true
+  config.sign_out_via = :delete
 
   # ==> Navigation configuration
   # Lists the formats that should be treated as navigational. Formats like
