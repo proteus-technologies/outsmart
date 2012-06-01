@@ -28,6 +28,10 @@
     <% if user_signed_in? %>
       <p>You're signed in!</p>
       <%= link_to('log-out', destroy_user_session_path, :method => :delete) %>
+      <% ## for some reason this admin code isn't showing. %>
+      <% if current_user.is_admin? %>
+        <%= link_to 'Admin Page', admin_path %>
+      <% end %>
     <% else %>
     <p>Need to log-in in order to enter a solution</p>
     <%= link_to 'log-in',new_user_session_path %>
