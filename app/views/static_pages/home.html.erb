@@ -24,9 +24,10 @@
     <p> No problems at this time.</p>
   <%end%>
 
-    <h2>Enter Solution</h2>
+  <h2>Enter Solution</h2>
+
     <% if user_signed_in? %>
-      <p>You're signed in!</p>
+      <%= link_to 'Enter a new solution', new_solution_path %> <br/><br/><br/>
       <%= link_to('log-out', destroy_user_session_path, :method => :delete) %>
       <% if current_user.is_admin? %>
         <%= link_to 'Admin Page', admin_path %>
