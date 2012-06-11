@@ -1,12 +1,14 @@
 class StaticPagesController < ApplicationController
-  # before_filter :require_admin, :except => [:home]
-  # before_filter :authenticate_user!, :except => [:home]
+  before_filter :authenticate_user!, :except => [:home]
+  before_filter :require_admin, :except => [:home]
 
   # Only Admin should access this arena; if not admin,
   # redirect to the home page
   def require_admin
-    unless current_user.is_admin?
-      redirect_to root_path
+    if user_signed_in?
+      unless current_user.is_admin?
+       redirect_to root_path
+      end
     end
   end
 
