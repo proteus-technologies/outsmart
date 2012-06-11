@@ -38,6 +38,7 @@ class SolutionsController < ApplicationController
   # GET /solutions/new.json
   def new
     @solution = Solution.new
+    @problems = Problem.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -48,6 +49,7 @@ class SolutionsController < ApplicationController
   # GET /solutions/1/edit
   def edit
     @solution = Solution.find(params[:id])
+    @problems = Problem.all
   end
 
   # POST /solutions
