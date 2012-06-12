@@ -10,6 +10,8 @@
   <% rndr = Redcarpet::Render::HTML.new :hard_wrap => true, :autolink => true, :fenced_code_blocks => true, :lax_html_blocks => true %>
   <% md = Redcarpet::Markdown.new(rndr) %>
   <%= md.render(@problem.text_description).html_safe %>
+
+  <%# The syntax below didn't work for various reasons. The last one is without Markdown %>
   <%# raw Redcarpet.new(@problem.text_description).to_html %>
   <%# markdown.render(@problem.text_description).html_safe %>
   <%# markdown(@problem.text_description) %>
@@ -49,4 +51,5 @@
 </p>
 
 <%= link_to 'Edit', edit_problem_path(@problem) %> |
-<%= link_to 'Back', problems_path %>
+<%= link_to 'Problems Home', problems_path %> | 
+<%= link_to 'Admin Home', admin_path %>

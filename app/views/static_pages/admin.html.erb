@@ -5,28 +5,22 @@
   <p>You're NOT signed in! You shouldn't be here!!!</p>
 <% end %>
 
-<p>Here is a list of problems with the number of solutions for each:</p>
+<p>Here is the list of problems - click on the problem name to see problem details and the solutions. </p>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Solutions</th>
-  </tr>
-  <%#if false%>
+<table cellpadding="5" style="text-align:center">
   <% @problems.each do |p| %>
     <tr>
       <td><%= link_to p.title, p %></td>
-      <td><%= p.solutions.count %></td>
+      <td><%= p.solutions.count %> solutions<td>
     </tr>
   <% end %>
-  <%#end%>
 
 </table>
-
-<p>Click on the problem to see the solutions!</p>
 
 <p>Would you like to create a new problem?
 <%= link_to 'New Problem', new_problem_path %></p>
 
 <p>Have a great day!</p>
-<%= link_to 'Home', root_path %>
+<%= link_to 'Home', root_path %> | 
+<%= link_to 'Solutions Home', solutions_path %> | 
+<%= link_to 'Problems Home', problems_path %>

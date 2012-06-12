@@ -1,5 +1,8 @@
 <h1>New solution</h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Back', solutions_path %>
+<% if current_user.is_admin? %>
+  <%= link_to 'Solutions Home', solutions_path %> | 
+  <%= link_to 'Admin Home', admin_path %> | 
+<% end %>
+<%= link_to 'Home', root_path %>
