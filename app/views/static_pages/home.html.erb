@@ -6,20 +6,20 @@
     </p>
     <h2>Current Problem</h2>
        <% if !@problems.empty? %>
-    <%p = @problems.last%> 
+         <%p = @problems.last%> 
+         <% rndr = Redcarpet::Render::HTML.new :hard_wrap => true, :autolink => true, :fenced_code_blocks => true, :lax_html_blocks => true %>
+         <% md = Redcarpet::Markdown.new(rndr) %>
     <table>
       <tr>
-        <td>Title: </td>
+        <td><b>Title:</b></td>
         <td> <%= p.title %></td>
       </tr>
       <tr>
-        <td>Submition Deadline: </td>
+        <td><b>Submition Deadline:</b></td>
         <td><%= p.end_date%></td>
       </tr>
-      <tr>
-        <td><%= p.text_description%></td>
-      </tr>
     </table>
+    <%= md.render(p.text_description).html_safe %>
   <% else%>
     <p> No problems at this time.</p>
   <%end%>
