@@ -17,7 +17,13 @@ class StaticPagesController < ApplicationController
   end
 
   def home
-    @problems = Problem.all
-    @solutions = Solution.all
+    # Get the current problem to display on the home page
+    @current_problem = Problem.last
+    if user_signed_in?
+      # Solutions that belong to the current logged in user
+      @solutions = Solution.where(:user_ID => current_user.id)
+      # Problems that the solutions of the current logged in user belong_to
+      @problems = Problem.joins(:solutions)
+    end
   end
 end
