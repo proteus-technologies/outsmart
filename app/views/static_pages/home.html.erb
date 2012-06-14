@@ -1,6 +1,6 @@
-<h1>User Page</h1>
+<h1>Welcome!</h1>
 <p>
-  This is the home page for the general user for the  
+  This is the home page for the 
     <a href="http://outsmart.proteus-technologies.com">Proteus Technologies Outsmart Challenge Program</a>
     application.
     </p>
@@ -17,7 +17,7 @@
       </tr>
       <tr>
         <td><b>Submition Deadline:</b></td>
-        <td><%= p.end_date%></td>
+        <td><%= p.end_date.strftime('%A, %B %d at %H:%M')%></td>
       </tr>
     </table>
     <%= md.render(p.text_description).html_safe %>
@@ -25,7 +25,7 @@
     <p> No problems at this time.</p>
   <%end%>
 
-  <h2>Enter Solution</h2>
+  <h2> Enter Solution </h2>
 
     <% if user_signed_in? %>
       <%= link_to 'Enter a new solution', new_solution_path %>
@@ -34,7 +34,7 @@
     <% end %>
 
     <% if user_signed_in? %>
-      <br/><br/><br>
+      <br/><br>
       <h2>Previously Submitted Solutions:</h2>
       <table>
         <tr>
@@ -68,5 +68,5 @@
       <% end %>
     <% else %>
       <%= link_to 'log-in',new_user_session_path %> |
-      <%= link_to 'register', new_user_registration_path %>.
+      <%= link_to 'register', new_user_registration_path %>
     <% end %>

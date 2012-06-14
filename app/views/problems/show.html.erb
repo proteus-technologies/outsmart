@@ -20,12 +20,13 @@
 
 <p>
   <b>Start date:</b>
-  <%= @problem.start_date %>
+  <%# Format the time so it's Sunday, May 03 at 23:59 %>
+  <%= @problem.start_date.strftime('%A, %B %d at %H:%M')%>
 </p>
 
 <p>
   <b>End date:</b>
-  <%= @problem.end_date %>
+  <%= @problem.end_date.strftime('%A, %B %d at %H:%M')%>
 </p>
 
 <p>
