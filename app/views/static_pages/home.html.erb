@@ -3,70 +3,81 @@
   This is the home page for the 
     <a href="http://outsmart.proteus-technologies.com" target="_blank">Proteus Technologies Outsmart Challenge Program</a>
     application.
-    </p>
-    <h2>Current Problem</h2>
-       <% if @current_problem %>
-         <% p = @current_problem %> 
-         <%# Set up the Markdown variables %>
-         <% rndr = Redcarpet::Render::HTML.new :hard_wrap => true, :autolink => true, :fenced_code_blocks => true, :lax_html_blocks => true %>
-         <% md = Redcarpet::Markdown.new(rndr) %>
+</p>
+<hr>
+  <h2>Current Problem</h2>
+  <% if @current_problem %>
+    <% p = @current_problem %> 
+    <%# Set up the Markdown variables %>
+    <% rndr = Redcarpet::Render::HTML.new :hard_wrap => true, :autolink => true, :fenced_code_blocks => true, :lax_html_blocks => true %>
+    <% md = Redcarpet::Markdown.new(rndr) %>
     <table>
       <tr>
         <td><b>Title:</b></td>
-        <td> <%= p.title %></td>
+        <td>"<%= p.title %>"</td>
       </tr>
       <tr>
         <td><b>Submition Deadline:</b></td>
         <td><%= p.end_date.strftime('%A, %B %d at %H:%M')%></td>
       </tr>
     </table>
+<span style="text-align:center">
     <%= md.render(p.text_description).html_safe %>
   <% else%>
     <p> No problems at this time.</p>
   <%end%>
+</span>
 
-  <h2> Enter Solution </h2>
+<hr>
+<h2> Enter Solution </h2>
 
     <% if user_signed_in? %>
+      Can you solve the puzzle? Do you know the answer? <br/>
+      If so, then...
       <%= link_to 'Enter a new solution', new_solution_path %>
     <% else %>
-      <p>Need to log-in in order to enter a solution</p>
+      <p>Please log-in in order to enter a solution</p>
     <% end %>
 
     <% if user_signed_in? %>
       <br/><br>
-      <h2>Previously Submitted Solutions:</h2>
-      <table>
-        <tr>
-          <th>Solution file url</th>
-          <th>Text description</th>
-          <th>Problem id</th>
-          <th>Problem title</th>
-          <th></th>
-        </tr>
-        <%# Set up the Markdown variables %>
-        <% rndr_sol = Redcarpet::Render::HTML.new :hard_wrap => true, :autolink => true, :fenced_code_blocks => true, :lax_html_blocks => true %>
-        <% md_sol = Redcarpet::Markdown.new(rndr_sol) %>
-        <%# These solutions all belong to the current user (see app/controllers/static_pages_controllers) %>
-        <% @solutions.each do |solution| %>
+      <% if !@solutions.empty? %>
+        <h2>Previously Submitted Solutions:</h2>
+        <table>
           <tr>
-            <td><%= solution.solution_file_url %></td>
-            <%#= solution.text_description #without Markdown %>
-            <td><%= md_sol.render(solution.text_description).html_safe %></td>
-            <td><%=solution.problem_ID %></td>
-            <% cp = @problems.find_by_id(solution.problem_ID) %>
-            <% if cp %>
-              <td><%= cp.try(:title) %></td>
-            <% else %>
-              <td><em>--This problem has been deleted--</em></td>
-            <% end %>
-            <td><%= link_to 'Delete Solution', solution, confirm: 'Are you sure?', method: :delete %></td>
+            <th>Solution file url</th>
+            <th>Text description</th>
+            <th>Problem id</th>
+            <th>Problem title</th>
+            <th></th>
           </tr>
-        <% end %>
-      </table>
+          <%# Set up the Markdown variables %>
+          <% rndr_sol = Redcarpet::Render::HTML.new :hard_wrap => true, :autolink => true, :fenced_code_blocks => true, :lax_html_blocks => true %>
+          <% md_sol = Redcarpet::Markdown.new(rndr_sol) %>
+          <%# These solutions all belong to the current user (see app/controllers/static_pages_controllers) %>
+          <% @solutions.each do |solution| %>
+            <tr>
+              <td><%= solution.solution_file_url %></td>
+              <%#= solution.text_description #without Markdown %>
+              <td><%= md_sol.render(solution.text_description).html_safe %></td>
+              <td><%=solution.problem_ID %></td>
+              <% cp = @problems.find_by_id(solution.problem_ID) %>
+              <% if cp %>
+                <td><%= cp.try(:title) %></td>
+              <% else %>
+                <td><em>--This problem has been deleted--</em></td>
+              <% end %>
+              <td><%= link_to 'Delete Solution', solution, confirm: 'Are you sure?', method: :delete %></td>
+            </tr>
+          <% end %>
+        </table>
+      <% else %>
+        <p>You don't have any solutions! This void is easily solved by clicking the 
+        "Enter a new solution" link above. </p>
+      <% end %>
     <% end %>
 
-    <br/><br/><br/>
+    <hr>
     <% if user_signed_in? %>
       <%= link_to('log-out', destroy_user_session_path, :method => :delete) %>
       <% if current_user.is_admin? %>
