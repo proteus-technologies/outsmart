@@ -5,7 +5,9 @@
 <%= link_to 'Markdown Syntax', "http://daringfireball.net/projects/markdown/syntax", :target => "_blank" %>
 <br/><br/><br/>
 <% if current_user.is_admin? %>
-  <%= link_to 'Solutions Home', solutions_path %> | 
-  <%= link_to 'Admin Home', admin_path %> | 
+  <%= link_to 'Admin Home', admin_path %> |
 <% end %>
-<%= link_to 'Home', root_path %>
+<%= link_to 'Home', root_path %> |
+<% if current_user.is_admin? %>
+  <%= link_to 'Solutions Home', solutions_path %>
+<% end %>
