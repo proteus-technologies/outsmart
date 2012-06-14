@@ -53,8 +53,12 @@
             <%#= solution.text_description #without Markdown %>
             <td><%= md_sol.render(solution.text_description).html_safe %></td>
             <td><%=solution.problem_ID %></td>
-            <% cp = @problems.find(solution.problem_ID) %>
-            <td><%= cp.try(:title) %></td>
+            <% cp = @problems.find_by_id(solution.problem_ID) %>
+            <% if cp %>
+              <td><%= cp.try(:title) %></td>
+            <% else %>
+              <td>This problem has been deleted</td>
+            <% end %>
           </tr>
         <% end %>
       </table>
