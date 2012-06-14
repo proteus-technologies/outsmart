@@ -1,6 +1,6 @@
 class SolutionsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :require_admin, :except => [:new, :create]
+  before_filter :require_admin, :except => [:new, :create, :destroy]
 
   # Only Admin should access this arena; if not admin
   # redirect to home

@@ -1,7 +1,7 @@
 <h1>Welcome!</h1>
 <p>
   This is the home page for the 
-    <a href="http://outsmart.proteus-technologies.com">Proteus Technologies Outsmart Challenge Program</a>
+    <a href="http://outsmart.proteus-technologies.com" target="_blank">Proteus Technologies Outsmart Challenge Program</a>
     application.
     </p>
     <h2>Current Problem</h2>
@@ -42,6 +42,7 @@
           <th>Text description</th>
           <th>Problem id</th>
           <th>Problem title</th>
+          <th></th>
         </tr>
         <%# Set up the Markdown variables %>
         <% rndr_sol = Redcarpet::Render::HTML.new :hard_wrap => true, :autolink => true, :fenced_code_blocks => true, :lax_html_blocks => true %>
@@ -57,8 +58,9 @@
             <% if cp %>
               <td><%= cp.try(:title) %></td>
             <% else %>
-              <td>This problem has been deleted</td>
+              <td><em>--This problem has been deleted--</em></td>
             <% end %>
+            <td><%= link_to 'Delete Solution', solution, confirm: 'Are you sure?', method: :delete %></td>
           </tr>
         <% end %>
       </table>

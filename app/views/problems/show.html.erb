@@ -43,6 +43,7 @@
       <th>Text Description</th>
       <th>User ID</th>
       <th>Solution File URL</th>
+      <th></th>
     </tr>
     <% @problem.solutions.each do |s| %>
     <tr>
@@ -50,6 +51,7 @@
       <td><%= md.render(s.text_description).html_safe %></td>
       <td><%= s.user_ID %></td>
       <td><%= s.solution_file_url %></td>
+      <td><%= link_to 'Delete Solution', s, confirm: 'Are you sure?', method: :delete %></td>
     </tr>
     <% end %>
   </table>
