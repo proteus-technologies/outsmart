@@ -42,13 +42,13 @@
           <th>Problem id</th>
           <th>Problem title</th>
         </tr>
+        <%# These solutions all belong to the current user (see app/controllers/static_pages_controllers) %>
         <% @solutions.each do |solution| %>
           <tr>
             <td><%= solution.solution_file_url %></td>
             <td><%= solution.text_description %></td>
             <td><%=solution.problem_ID %></td>
-            <% pid = solution.problem_ID %>
-            <% cp = @problems.find(pid) %>
+            <% cp = @problems.find(solution.problem_ID) %>
             <td><%= cp.try(:title) %></td>
           </tr>
         <% end %>

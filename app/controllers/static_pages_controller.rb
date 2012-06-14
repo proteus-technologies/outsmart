@@ -23,7 +23,7 @@ class StaticPagesController < ApplicationController
       # Solutions that belong to the current logged in user
       @solutions = Solution.where(:user_ID => current_user.id)
       # Problems that the solutions of the current logged in user belong_to
-      @problems = Problem.joins(:solutions)
+      @problems = Problem.joins(:solutions).where('solutions.user_ID' => current_user.id)
     end
   end
 end
