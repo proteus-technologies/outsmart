@@ -31,7 +31,7 @@
     <%= f.label :user_id %><br />
     <% cu = current_user %>
     <% @problem.user_id = cu.id %>
-    <%= f.number_field :user_id %>
+    <%= f.number_field :user_id, :readonly => true %>
   </div>
   <div class="actions">
     <%= f.submit %>

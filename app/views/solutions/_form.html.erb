@@ -24,13 +24,13 @@
     <%= f.label :user_ID %><br />
     <% cu = current_user %>
     <% @solution.user_ID = cu.id %>
-    <%= f.number_field :user_ID %>
+    <%= f.number_field :user_ID, :readonly => true %>
   </div>
   <div class="field">
     <%= f.label :problem_ID %><br />
     <% p = @problems.last %>
     <% @solution.problem_ID = p.id %>
-    <%= f.number_field :problem_ID %>
+    <%= f.number_field :problem_ID, :readonly => true %>
   </div>
 <%# end %>
   <div class="actions">
