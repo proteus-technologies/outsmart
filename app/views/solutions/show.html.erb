@@ -7,7 +7,10 @@
 
 <p>
   <b>Text description:</b>
-  <%= @solution.text_description %>
+  <%#= @solution.text_description #without Markdown %>
+  <% rndr = Redcarpet::Render::HTML.new :hard_wrap => true, :autolink => true, :fenced_code_blocks => true, :lax_html_blocks => true %>
+  <% md = Redcarpet::Markdown.new(rndr) %>
+  <%= md.render(@solution.text_description).html_safe %>
 </p>
 
 <p>

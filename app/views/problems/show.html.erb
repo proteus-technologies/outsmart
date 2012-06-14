@@ -34,6 +34,9 @@
 </p>
 <p>
   <b>Solutions:</b>
+  <%# Set up the Markdown %>
+  <% rndr_sol = Redcarpet::Render::HTML.new :hard_wrap => true, :autolink => true, :fenced_code_blocks => true, :lax_html_blocks => true %>
+  <% md_sol = Redcarpet::Markdown.new(rndr_sol) %>
   <table>
     <tr>
       <th>Text Description</th>
@@ -42,7 +45,8 @@
     </tr>
     <% @problem.solutions.each do |s| %>
     <tr>
-      <td><%= s.text_description %></td>
+      <%# s.text_description #without Markdown %>
+      <td><%= md.render(s.text_description).html_safe %></td>
       <td><%= s.user_ID %></td>
       <td><%= s.solution_file_url %></td>
     </tr>

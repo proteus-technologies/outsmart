@@ -7,6 +7,7 @@
     <h2>Current Problem</h2>
        <% if @current_problem %>
          <% p = @current_problem %> 
+         <%# Set up the Markdown variables %>
          <% rndr = Redcarpet::Render::HTML.new :hard_wrap => true, :autolink => true, :fenced_code_blocks => true, :lax_html_blocks => true %>
          <% md = Redcarpet::Markdown.new(rndr) %>
     <table>
@@ -42,11 +43,15 @@
           <th>Problem id</th>
           <th>Problem title</th>
         </tr>
+        <%# Set up the Markdown variables %>
+        <% rndr_sol = Redcarpet::Render::HTML.new :hard_wrap => true, :autolink => true, :fenced_code_blocks => true, :lax_html_blocks => true %>
+        <% md_sol = Redcarpet::Markdown.new(rndr_sol) %>
         <%# These solutions all belong to the current user (see app/controllers/static_pages_controllers) %>
         <% @solutions.each do |solution| %>
           <tr>
             <td><%= solution.solution_file_url %></td>
-            <td><%= solution.text_description %></td>
+            <%#= solution.text_description #without Markdown %>
+            <td><%= md_sol.render(solution.text_description).html_safe %></td>
             <td><%=solution.problem_ID %></td>
             <% cp = @problems.find(solution.problem_ID) %>
             <td><%= cp.try(:title) %></td>
