@@ -21,11 +21,13 @@
   </div>
   <div class="field">
     <%= f.label :start_date %><br />
-    <%= f.datetime_select :start_date %>
+    <%# Start date - put the minutes in 15 minute increments %>
+    <%= f.datetime_select :start_date, :minute_step => 15 %>
   </div>
   <div class="field">
     <%= f.label :end_date %><br />
-    <%= f.datetime_select :end_date %>
+    <%# End date - default to one week from today and put the minutes in 15 minute increments %>
+    <%= f.datetime_select :end_date, :default => 7.days.from_now, :minute_step => 15 %>
   </div>
   <div class="field">
     <%= f.label :user_id %><br />

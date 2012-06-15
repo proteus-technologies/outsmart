@@ -48,7 +48,7 @@
     <% @problem.solutions.each do |s| %>
     <tr>
       <%# s.text_description #without Markdown %>
-      <td><%= md.render(s.text_description).html_safe %></td>
+      <td><%= md_sol.render(s.text_description).html_safe %></td>
       <td><%= s.user_ID %></td>
       <td><%= s.solution_file_url %></td>
       <td><%= link_to 'Delete Solution', s, confirm: 'Are you sure?', method: :delete %></td>
